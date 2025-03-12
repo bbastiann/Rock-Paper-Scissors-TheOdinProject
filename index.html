@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock-Paper-Scissors-TheOdinProject</title>
+</head>
+<body>
+    <script>
+        console.log("Rock-Paper-Scissors");
+
+        function getRandomValue(){
+            let max = 3;
+            return Math.floor(Math.random() * 3);
+        }
+
+
+        function getComputerChoice(){
+            var randomValue = getRandomValue();
+            switch(randomValue){
+                case 0:
+                return "rock";
+                break;                
+
+                case 1:
+                return "paper";
+                break;
+
+                case 2:
+                return "scissors";
+                break;  
+            }
+        }
+
+        function getHumanChoice(){
+            let choice = prompt("Elige: rock, paper o scissors");
+            return choice.toLowerCase(); 
+        }
+
+
+ 
+
+    function playRound(humanChoice, computerChoice) {
+
+       switch(humanChoice){
+        case "rock":
+            if(computerChoice == "paper"){
+                computerScore++;
+                return `You lose! ${computerChoice} beats ${humanChoice}`;
+
+            }else if(computerChoice == "rock"){
+                return "tie";
+
+            }else if(computerChoice == "scissors"){
+                humanScore++;
+                return `You Win! ${humanChoice} beats ${computerChoice}`;
+            }
+            break;
+        case "paper":
+            if(computerChoice == "paper"){
+                return "Tie";
+
+            }else if(computerChoice == "rock"){
+                humanScore++;
+                return `You Win! ${humanChoice} beats ${computerChoice}`;
+
+            }else if(computerChoice == "scissors"){
+                computerScore++;
+                return `You lose! ${computerChoice} beats ${humanChoice}`;
+            }
+            break;
+        case "scissors":
+            if(computerChoice == "paper"){
+                humanScore++;
+                return `You Win! ${humanChoice} beats ${computerChoice}`;
+
+            }else if(computerChoice == "rock"){
+                computerScore++;
+                return `You lose! ${computerChoice} beats ${humanChoice}`;
+
+            }else if(computerChoice == "scissors"){
+                return "Tie";
+            }
+            break;
+
+       }
+
+    }
+
+    let humanScore = 0;
+    let computerScore = 0;
+
+    function playGame(){
+        
+
+        for(i=0 ; i < 5; i++){
+
+            console.log("Ronda " + i);
+            const humanChoice = getHumanChoice();
+            const computerChoice = getComputerChoice();
+            let resultado = playRound(humanChoice, computerChoice);
+            console.log(resultado);
+        }
+
+        if(humanScore > computerScore){
+            console.log("YOU WIN!")
+        }else if(computerScore > computerScore){
+            console.log("YOU LOOSE!");
+        }else{
+            console.log("TIE");
+        }
+
+    }
+
+    console.log(playRound(playGame()));
+
+    </script>
+</body>
+</html>
